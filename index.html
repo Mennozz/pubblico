@@ -3,75 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Progetto con Navbar</title>
+    <title>Progetto Gestionale Libri</title>
     <style>
         /* Stile di base */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: rgb(0, 153, 156);
+            background-color: #f4f4f4;
             color: #333;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            flex-direction: column;
+            overflow-x: hidden;
         }
+
+        /* Navbar */
         nav {
             display: flex;
             justify-content: center;
-            background-color: #007BFF;
+            background-color: #1a1a1a;
             width: 100%;
-            padding: 15px 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 100;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s ease;
         }
         nav a {
             color: white;
-            padding: 14px 20px;
-            text-align: center;
-            text-decoration: none;
             font-size: 18px;
-            display: inline-block;
-            transition: background-color 0.3s ease;
+            text-decoration: none;
+            padding: 12px 20px;
+            margin: 0 15px;
+            transition: color 0.3s ease;
         }
         nav a:hover {
-            background-color: #0056b3;
-        }
-        .container {
-            padding: 40px 20px;
-            max-width: 1000px;
-            margin-top: 100px;
-            margin-bottom: 40px;
-            width: 90%;
-            text-align: center;
-        }
-        h2 {
-            font-size: 2rem;
             color: #007BFF;
+        }
+
+        /* Sezione container principale */
+        .container {
+            padding: 80px 20px;
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Titoli */
+        h1, h2 {
+            font-size: 3rem;
+            color: #333;
             margin-bottom: 20px;
             text-transform: uppercase;
         }
+
+        /* Carousel (Immagini) */
         .carousel {
             position: relative;
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             margin: auto;
             overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s ease-out;
-            transition: transform 0.5s ease-in-out;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease;
         }
         .carousel img {
             width: 100%;
             display: block;
-            border-radius: 10px;
+            border-radius: 15px;
             transition: transform 0.5s ease;
         }
         .carousel img:hover {
@@ -84,17 +89,16 @@
             transform: translateX(-50%);
             background-color: rgba(0, 0, 0, 0.7);
             color: white;
-            padding: 10px;
             font-size: 24px;
-            width: 80%;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            transition: opacity 1s ease;
+            padding: 10px 20px;
+            border-radius: 10px;
+            width: 90%;
+            text-align: center;
         }
         .carousel-btn {
             background-color: #007BFF;
             color: white;
-            padding: 12px 20px;
+            padding: 12px 25px;
             border: none;
             cursor: pointer;
             border-radius: 5px;
@@ -104,6 +108,8 @@
         .carousel-btn:hover {
             background-color: #0056b3;
         }
+
+        /* Pulsanti */
         .download-btn, .submit-btn {
             padding: 12px 30px;
             background-color: #007BFF;
@@ -118,24 +124,24 @@
         .download-btn:hover, .submit-btn:hover {
             background-color: #0056b3;
         }
+
+        /* Form Container */
         .form-container {
             max-width: 600px;
             margin: auto;
             background-color: white;
             padding: 30px;
-            box-shadow: 0px 2px 8px #0056b3;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-            transition: transform 0.5s ease-in-out;
         }
         .form-container input,
         .form-container textarea {
             width: 100%;
-            padding: 12px;
-            margin: 10px -10px;
+            padding: 15px;
+            margin: 10px 0;
             border-radius: 5px;
-            border: 1px solid #0056b3;
+            border: 1px solid #ccc;
             font-size: 16px;
-            transition: border 0.3s ease;
         }
         .form-container input:focus,
         .form-container textarea:focus {
@@ -153,38 +159,90 @@
             }
         }
 
-        @keyframes fadeInText {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100%);
-            }
-            to {
-                transform: translateX(0);
-            }
-        }
-
-        /* Effetti di ombra per le sezioni */
+        /* Sezioni a scorrimento */
         .section {
             background-color: white;
-            padding: 30px;
-            margin-bottom: 40px;
-            border-radius: 10px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            padding: 50px 20px;
+            margin-bottom: 60px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            position: relative;
+            animation: fadeIn 1s ease-out;
         }
+
+        /* Hover effect */
         .section:hover {
             transform: translateY(-10px);
         }
+
+        /* Sezione video */
+        iframe {
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1, h2 {
+                font-size: 2.5rem;
+            }
+
+            .carousel-text {
+                font-size: 18px;
+            }
+
+            .carousel-btn {
+                padding: 10px 20px;
+            }
+
+            .download-btn, .submit-btn {
+                padding: 10px 25px;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+
+            iframe {
+                width: 100%;
+                height: auto;
+            }
+
+            nav a {
+                font-size: 16px;
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1, h2 {
+                font-size: 2rem;
+            }
+
+            .carousel-text {
+                font-size: 16px;
+            }
+
+            .carousel-btn {
+                padding: 8px 16px;
+            }
+
+            .download-btn, .submit-btn {
+                padding: 8px 20px;
+            }
+
+            nav a {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+
+            .form-container input,
+            .form-container textarea {
+                font-size: 14px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -196,31 +254,29 @@
     <a href="#feedback">Feedback</a>
 </nav>
 
-
+<!-- Sezione di Presentazione -->
 <section class="container section">
-
-
+    <h1>Benvenuto nel Gestionale Libri</h1>
+    <p>Una soluzione semplice ed efficiente per gestire il tuo catalogo di libri.</p>
 </section>
 
-
+<!-- Sezione Presentazione Funzionamento -->
 <section class="container section">
-    <h2>Presentazione funzionamento</h2>
+    <h2>Come Funziona</h2>
     <div>
-        <iframe width="560" height="315"  style="border-radius: 20px;" src="https://www.youtube.com/embed/vDMyIZ2nsS0?si=gDJA0dMvaxf9Up6s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" style="border-radius: 20px;" src="https://www.youtube.com/embed/vDMyIZ2nsS0?si=gDJA0dMvaxf9Up6s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 </section>
 
 <!-- Sezione Immagini -->
 <section id="images" class="container section">
-    <h2>Immagini</h2>
+    <h2>Immagini del Progetto</h2>
     <div class="carousel">
         <img id="carousel-img" src="img1.jpg" alt="Immagine 1">
         <div id="carousel-text" class="carousel-text">Descrizione immagine 1</div>
     </div>
     <button class="carousel-btn" onclick="changeImage()">Cambia Immagine</button>
 </section>
-
-
 
 <!-- Sezione Scarica Progetto -->
 <section id="download" class="container section">
@@ -233,7 +289,7 @@
 
 <!-- Sezione Feedback -->
 <section id="feedback" class="container section">
-    <h2>Feedback</h2>
+    <h2>Lascia il Tuo Feedback</h2>
     <div class="form-container">
         <form action="feedback_process.php" method="POST">
             <label for="email">La tua Email:</label><br>
@@ -245,7 +301,6 @@
     </div>
 </section>
 
-
 <!-- Script per il carosello -->
 <script>
     let currentImageIndex = 0;
@@ -254,12 +309,7 @@
         { src: 'img2.jpg', text: 'Descrizione immagine 2' },
         { src: 'img3.jpg', text: 'Descrizione immagine 3' },
         { src: 'img4.jpg', text: 'Descrizione immagine 4' },
-        { src: 'img5.jpg', text: 'Descrizione immagine 5' },
-        { src: 'img6.jpg', text: 'Descrizione immagine 6' },
-        { src: 'img7.jpg', text: 'Descrizione immagine 7' },
-        { src: 'img8.jpg', text: 'Descrizione immagine 8' },
-        { src: 'img9.jpg', text: 'Descrizione immagine 9' },
-        { src: 'img10.jpg', text: 'Descrizione immagine 10' }
+        { src: 'img5.jpg', text: 'Descrizione immagine 5' }
     ];
 
     function changeImage() {
