@@ -95,18 +95,29 @@
             width: 90%;
             text-align: center;
         }
-        .carousel-btn {
-            background-color: #007BFF;
-            color: white;
-            padding: 12px 25px;
-            border: none;
+
+        /* Frecce */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 50%;
             cursor: pointer;
-            border-radius: 5px;
-            margin-top: 20px;
+            z-index: 10;
             transition: background-color 0.3s ease;
         }
-        .carousel-btn:hover {
-            background-color: #0056b3;
+        .arrow:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .arrow-left {
+            left: 10px;
+        }
+        .arrow-right {
+            right: 10px;
         }
 
         /* Pulsanti */
@@ -192,12 +203,8 @@
                 font-size: 18px;
             }
 
-            .carousel-btn {
-                padding: 10px 20px;
-            }
-
             .download-btn, .submit-btn {
-                padding: 10px 25px;
+                padding: 10px 20px;
             }
 
             .form-container {
@@ -222,10 +229,6 @@
 
             .carousel-text {
                 font-size: 16px;
-            }
-
-            .carousel-btn {
-                padding: 8px 16px;
             }
 
             .download-btn, .submit-btn {
@@ -273,9 +276,12 @@
     <h2>Immagini del Progetto</h2>
     <div class="carousel">
         <img id="carousel-img" src="img1.jpg" alt="Immagine 1">
-        <div id="carousel-text" class="carousel-text">Descrizione immagine 1</div>
+        <div id="carousel-text" class="carousel-text">img1</div>
+        
+        <!-- Frecce per navigazione -->
+        <span class="arrow arrow-left" onclick="changeImage(-1)">&#10094;</span>
+        <span class="arrow arrow-right" onclick="changeImage(1)">&#10095;</span>
     </div>
-    <button class="carousel-btn" onclick="changeImage()">Cambia Immagine</button>
 </section>
 
 <!-- Sezione Scarica Progetto -->
@@ -305,15 +311,20 @@
 <script>
     let currentImageIndex = 0;
     const images = [
-        { src: 'img1.jpg', text: 'Descrizione immagine 1' },
-        { src: 'img2.jpg', text: 'Descrizione immagine 2' },
-        { src: 'img3.jpg', text: 'Descrizione immagine 3' },
-        { src: 'img4.jpg', text: 'Descrizione immagine 4' },
-        { src: 'img5.jpg', text: 'Descrizione immagine 5' }
+        { src: 'img1.jpg', text: 'img1' },
+        { src: 'img2.jpg', text: 'img2' },
+        { src: 'img3.jpg', text: 'img3' },
+        { src: 'img4.jpg', text: 'img4' },
+        { src: 'img5.jpg', text: 'img5' },
+        { src: 'img6.jpg', text: 'img6' },
+        { src: 'img7.jpg', text: 'img7' },
+        { src: 'img8.jpg', text: 'img8' },
+        { src: 'img9.jpg', text: 'img9' },
+        { src: 'img10.jpg', text: 'img10' }
     ];
 
-    function changeImage() {
-        currentImageIndex = (currentImageIndex + 1) % images.length;
+    function changeImage(direction) {
+        currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
         document.getElementById('carousel-img').src = images[currentImageIndex].src;
         document.getElementById('carousel-text').textContent = images[currentImageIndex].text;
     }
