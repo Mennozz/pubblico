@@ -136,6 +136,58 @@
         .download-btn:hover, .submit-btn:hover {
             background-color: #0056b3;
         }
+        /*Tabella*/
+        table {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+        .container-tabella{
+            padding: 80px 20px;
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        th{
+            padding: 16px;
+            text-align: left;
+            font-size: 16px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+        td {
+            padding: 16px;
+            text-align: left;
+            font-size: 16px;
+            border-top-right-radius: 12px;
+            border-top-left-radius: 12px;
+        }
+
+        th {
+            background-color: #1a1a1a;
+            color: #f0f0f5;
+            
+        }
+
+        tr:nth-child(even) {
+            background-color: #f0f0f5;
+        }
+
+        tr:hover {
+            background-color: #0057b32c;
+        }
+
+        td {
+            border-bottom: 1px solid #e0e0e5;
+        }
+
+
 
         /* Form Container */
         .form-container {
@@ -286,6 +338,54 @@
     </div>
 </section>
 
+<!--Tabella info-->
+
+<section id="tabella" class="container section">
+    <div>
+        <h1>Gestione Libreria</h1><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Funzionalità</th>
+                    <th>Descrizione</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Crea Account</td>
+                    <td>Crea un nuovo account per gestire la tua libreria personale.</td>
+               
+                </tr>
+                <tr>
+                    <td>Login</td>
+                    <td>Accedi al tuo account per modificare la libreria.</td>
+                  
+                </tr>
+                <tr>
+                    <td>Aggiungi Libro</td>
+                    <td>Inserisci nuovi libri nella tua libreria.</td>
+                </tr>
+                <tr>
+                    <td>Modifica Libro</td>
+                    <td>Modifica le informazioni di un libro già presente nella libreria.</td>
+                    
+                </tr>
+                <tr>
+                    <td>Elimina Libro</td>
+                    <td>Rimuovi un libro dalla tua libreria.</td>
+                   
+                </tr>
+                <tr>
+                    <td>Ricerca Libro</td>
+                    <td>Cerca libri nella libreria utilizzando diversi criteri.</td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
 <!-- Sezione Scarica Progetto -->
 <section id="download" class="container section">
     <h2>Scarica Progetto</h2>
@@ -294,6 +394,8 @@
         <button class="download-btn">Scarica</button>
     </a>
 </section>
+
+
 
 <!-- Sezione Feedback -->
 <section id="feedback" class="container section">
@@ -335,6 +437,12 @@
         changeImage(0); // Imposta la prima immagine al caricamento della pagina
     };
 </script>
+<p style="display: flex; flex-direction: column; align-items: center;" id="piede">
+    <strong style="margin-bottom: 15px;">Maico Menozzi</strong>
+    <strong style="margin-bottom: 15px;">menozzi.maico@einaudicorreggio.it</strong>
+    <strong style="margin-bottom: 15px;">Instagram: nome</strong>
+</p>
+
 
 </body>
 </html>
