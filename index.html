@@ -394,15 +394,14 @@
 <section id="download" class="container section">
     <h2>Scarica Progetto</h2>
     <p>Scarica il progetto completo cliccando sul bottone qui sotto:</p>
-    <a href="progetto.zip" download>
+    <a href="GuiJava23_03_2025.zip" download>
         <button class="download-btn">Scarica</button>
     </a>
 </section>
 
 
-
 <!-- Sezione Feedback -->
-<section id="feedback" class="container section">
+<section id="feedback" class="container section" onsubmit=inviaFeedback(event)>
     <h2>Lascia il Tuo Feedback</h2>
     <div class="form-container">
         <form action="feedback_process.php" method="POST">
@@ -414,6 +413,7 @@
         </form>
     </div>
 </section>
+
 
 
 <!-- Script per il carosello -->
